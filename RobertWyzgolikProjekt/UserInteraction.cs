@@ -76,7 +76,7 @@ namespace RobertWyzgolikProjekt
                     Logger.logCurrentState(HelperActions.splitData(new Puzzle(puzzle, 77777), size));
                     return puzzle;
                 case 3:
-                    puzzle = BoardsConst.createSnailPuzzle(size);
+                    puzzle = UserInteraction.readUsersSnailBoard(size);
                     Logger.logCurrentState(HelperActions.splitData(new Puzzle(puzzle, 77777), size));
                     return puzzle;
                 default:
@@ -146,6 +146,25 @@ namespace RobertWyzgolikProjekt
                 len = intArray.Length;
             }
             
+            return board;
+        }
+        // method which allows user to provied his own snail board
+        public static List<int> readUsersSnailBoard(int size)
+        {
+            int len = 0;
+            int[] intArray;
+            List<int> board = new List<int>();
+            while (len != size * size)
+            {
+                Console.WriteLine($"Proszę wprowadzić tablicę w formacie snail i rozmiarze {size}x{size}");
+                Console.WriteLine("Wartość każdej kafalki powinna być oddzielona spacja np. 0 1 2 7 8 3 6 5 4");
+                Console.WriteLine("Wprowadzona wartość 0 oznacza puste pole");
+                string input = Console.ReadLine();
+                string[] stringArray = input.Split(' ');
+                intArray = Array.ConvertAll(stringArray, int.Parse);
+                board = new List<int>((int[])intArray);
+                len = intArray.Length;
+            }
             return board;
         }
         // this method allows user to provide his desired puzzle problem from a specific file
