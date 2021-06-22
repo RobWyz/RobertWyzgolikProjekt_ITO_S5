@@ -12,16 +12,7 @@ namespace RobertWyzgolikProjekt
     public class AStar
     {
         public const int movementCost = 1;
-        
-        private static void printPuzzle(List<int> board)
-        {
-            foreach (int elemn in board)
-            {
-                Console.Write($"{elemn} ");
-            }
-            Console.WriteLine("");
-        }
-
+ 
         // AStar class method contatining algorithm implementation based on a pseudecode privded in a raport.
 
         public static void runAStarSearch(List<int> board, List<int> finalBoard, int heuristic, int size)
@@ -33,29 +24,28 @@ namespace RobertWyzgolikProjekt
             List<int> possibleMoves = new List<int>();
             int zeroIndex;
             int jointG;
-            var heuristicValues = new Dictionary<int, int>();
-            List<List<int>> openSet = new List<List<int>>();
-            List<List<int>> closedSet = new List<List<int>>();
-            List<QueueObject> queue = new List<QueueObject>();
-            Puzzle joint;
-            Puzzle predecessor;
+            var heuristicValues = new Dictionary<int, int>(); // dictionary that stores node's heuristic values
+            List<QueueObject> queue = new List<QueueObject>(); // a prioritized queue that store current node, it's heuristic value and it's parent node
+            Puzzle joint; // Puzzle object that represent current board state
+            Puzzle predecessor; // puzzle object that represents 
             int singleMovementCost = QueueObject.movementCost;
-            queue.Add(new QueueObject(0, new Puzzle(board, id), 0, new Puzzle(new List<int>(), 0)));
+            queue.Add(new QueueObject(0, new Puzzle(board, id), 0, new Puzzle(new List<int>(), 0))); // adds init state to the queue
             int heuristicValue = 0;
             int nodeGFuncValue = 0;
             int movementDecision = 0;
-            IDictionary<int, List<int>> openSetDict = new Dictionary<int, List<int>>();
-            IDictionary<int, Puzzle> closedSetDict = new Dictionary<int, Puzzle>();
-            List<Puzzle> steps = new List<Puzzle>();
+            IDictionary<int, List<int>> openSetDict = new Dictionary<int, List<int>>(); // Open set
+            IDictionary<int, Puzzle> closedSetDict = new Dictionary<int, Puzzle>(); // Closed set
+            List<Puzzle> steps = new List<Puzzle>(); // List of puzzle's states that allows to retrive the whole path
             while (queue.Count > 0)
             {
                 sw.Start();
-                queue = queue.OrderBy(x => x.totalCost).ToList();
+                queue = queue.OrderBy(x => x.totalCost).ToList(); // sort queue so that it becomes like prioritized one
+                // assign specific values from the very first item from the prioritized queue
                 joint = new Puzzle(queue[0].joint.puzzle, queue[0].joint.id);
                 predecessor = new Puzzle(queue[0].predecessor.puzzle, queue[0].predecessor.id);
                 jointG = queue[0].nodeG;
-                queue.RemoveAt(0);
-                if (Movement.assessEqual(joint, finalBoard, size))
+                queue.RemoveAt(0); // pop the first item out of the prioritzed queue
+                if (Movement.assessEqual(joint, finalBoard, size)) // check whether we're already in a final state
                 {
                     sw.Stop();
                     steps.Add(joint);
@@ -65,6 +55,7 @@ namespace RobertWyzgolikProjekt
                         predecessor = new Puzzle(closedSetDict[predecessor.id].puzzle, closedSetDict[predecessor.id].id); 
                     }
                     steps.Reverse();
+                    // Display and log the whole information to the user
                     Logger.logSteps(steps, size);
                     UserInteraction.displayPath(steps, size);
                     Logger.customLog("Znaleziono docelowe rozwiązanie");
@@ -81,7 +72,7 @@ namespace RobertWyzgolikProjekt
                 int tempValueG = nodeGFuncValue + QueueObject.movementCost;
                 zeroIndex = joint.puzzle.IndexOf(0);
                 possibleMoves = HelperActions.returnMoves(zeroIndex, size);
-                foreach (int move in possibleMoves)
+                foreach (int move in possibleMoves) // check all of the possible successors and count their heuristics
                 {
                     List<int> suspectedBoard = new List<int>(Movement.returnBoardAfterMovement(joint.puzzle, move, size, zeroIndex));
                     if(!HelperActions.wasNodeVisited(closedSetDict, suspectedBoard, size))
@@ -106,8 +97,8 @@ namespace RobertWyzgolikProjekt
                     {
                         heuristicValue = HelperActions.splitHeuristics(boardAfterMovement, finalBoard, heuristic, size);
                     }
-                    openSetDict.Add(boardAfterMovement.id, new List<int>() { tempValueG, heuristicValue });
-                    queue.Add(new QueueObject(tempValueG + heuristicValue, boardAfterMovement, tempValueG, joint));
+                    openSetDict.Add(boardAfterMovement.id, new List<int>() { tempValueG, heuristicValue }); // add item to a open Set
+                    queue.Add(new QueueObject(tempValueG + heuristicValue, boardAfterMovement, tempValueG, joint)); // add item to a queue
                     
                 }
 

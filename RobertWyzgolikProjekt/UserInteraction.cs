@@ -237,6 +237,7 @@ namespace RobertWyzgolikProjekt
                 iter++;
                 Console.WriteLine("");
             }
+            Console.WriteLine($"Koszt: {iter}");
             Console.WriteLine("");
         }
     }

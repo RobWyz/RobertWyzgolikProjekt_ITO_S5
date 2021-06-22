@@ -31,16 +31,16 @@ namespace RobertWyzgolikProjekt
         public static bool assessSolvability(List<int> puzzle, List<int> finalBoard, int size)
         {
             int inv = countInversions(puzzle, finalBoard, size);
-            int puzzleZeroRow = puzzle.IndexOf(0) / size;
-            int puzzleZeroCol = puzzle.IndexOf(0) % size;
-            int finalBoardZeroRow = puzzle.IndexOf(0) / size;
-            int finalBoardZeroCol = puzzle.IndexOf(0) % size;
+            int puzzleZeroRow = (int)puzzle.IndexOf(0) / size;
+            int puzzleZeroCol = (int)puzzle.IndexOf(0) % size;
+            int finalBoardZeroRow = (int)puzzle.IndexOf(0) / size;
+            int finalBoardZeroCol = (int)puzzle.IndexOf(0) % size;
             int counter = (Math.Abs(puzzleZeroRow - finalBoardZeroRow) + Math.Abs(puzzleZeroCol - finalBoardZeroCol));
-            if (counter % 2 == 0 && inv % 2 == 0)
+            if ((counter % 2 == 0) && (inv % 2 == 0))
             {
                 return true;
             }
-            if (counter % 2 == 1 && inv % 2 == 1)
+            if ((counter % 2 == 1) && (inv % 2 == 1))
             {
                 return true;
             }

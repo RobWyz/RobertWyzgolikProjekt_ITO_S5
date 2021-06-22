@@ -7,8 +7,6 @@ using System.Diagnostics;
 
 namespace RobertWyzgolikProjekt
 {   
-   
-
     public class RtaStar
     {
         // Real Time A* algorithm implementation based on a pseudocode provided in a raport
@@ -27,9 +25,9 @@ namespace RobertWyzgolikProjekt
             while (true)
             {
                 sw.Start();
-                if (Movement.assessEqual(puzzle, finalPuzzle, size)){
+                if (Movement.assessEqual(puzzle, finalPuzzle, size)){ // assess whether it's a final state or just not yet
                     sw.Stop();
-                    //steps.Reverse();
+                    // Display and log the whole information to the user
                     Logger.logSteps(steps, size);
                     UserInteraction.displayPath(steps, size);
                     Logger.customLog("Znaleziono docelowe rozwiązanie");
@@ -48,7 +46,7 @@ namespace RobertWyzgolikProjekt
                     
                 }
                 moves = HelperActions.returnMoves(puzzle.puzzle.IndexOf(0), size);
-                foreach (var move in moves)
+                foreach (var move in moves) // dig into successors 
                 {
                     Puzzle successor = new Puzzle(Movement.returnBoardAfterMovement(puzzle.puzzle, move, size, puzzle.puzzle.IndexOf(0)), id);
                     if (!HelperActions.isStateKnown(heurisitcValues, successor.puzzle, size))
@@ -80,12 +78,11 @@ namespace RobertWyzgolikProjekt
                         moveMinId = successors[i].id;
                     }
                 }
-                HelperActions.updateHeuristicById(heurisitcValues, puzzle.id, 1 + mMin);
+                HelperActions.updateHeuristicById(heurisitcValues, puzzle.id, 1 + mMin); // upodate heuristic with new values
                 heuristicValuesById[puzzle.id] = 1 + mMin;
-                puzzle = new Puzzle(Movement.returnBoardAfterMovement(puzzle.puzzle, moveMin, size, puzzle.puzzle.IndexOf(0)), moveMinId);
-                steps.Add(puzzle);
-                
-                successors.Clear();
+                puzzle = new Puzzle(Movement.returnBoardAfterMovement(puzzle.puzzle, moveMin, size, puzzle.puzzle.IndexOf(0)), moveMinId); // create node object
+                steps.Add(puzzle); // add choosen node to the list of steps
+                successors.Clear(); // clear all of the successors available in this iteration
             }
         }
     }
