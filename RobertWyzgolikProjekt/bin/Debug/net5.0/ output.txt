@@ -1,0 +1,4 @@
+Rozmiar planszy: 4 
+ Heurystyka: Hamming 
+ Tryb: zero first 
+ Sposób przygotowania planszy: tak
