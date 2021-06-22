@@ -20,6 +20,7 @@ namespace RobertWyzgolikProjekt
             
             Stopwatch sw = new Stopwatch();
             Logger.customLog("Rozpoczynam działanie algorytmu A* ...");
+            Console.WriteLine("Rozpoczynam działanie algorytmu A* ...");
             int id = 1;
             List<int> possibleMoves = new List<int>();
             int zeroIndex;
@@ -62,6 +63,7 @@ namespace RobertWyzgolikProjekt
                     Logger.customLog($"Rozwiązanie znaleziono w {sw.ElapsedMilliseconds} ms");
                     Console.WriteLine("Znaleziono docelowe rozwiązanie");
                     Console.WriteLine($"Rozwiązanie znaleziono w { sw.ElapsedMilliseconds} ms \n");
+                    Console.WriteLine("------------------------------------");
                     return;
                 }
                 if (closedSetDict.ContainsKey(joint.id))

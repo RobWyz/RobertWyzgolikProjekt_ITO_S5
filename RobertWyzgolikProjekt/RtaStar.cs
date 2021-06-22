@@ -14,6 +14,7 @@ namespace RobertWyzgolikProjekt
         {
             Stopwatch sw = new Stopwatch(); // watch class object to measure performance
             Logger.customLog("Rozpoczynam działanie algorytmu RTA*...");
+            Console.WriteLine("Rozpoczynam działanie algorytmu RTA*...");
             List<Puzzle> steps = new List<Puzzle>(); // list that will contain the whole puzzle problem solving path
             List<int> moves = new List<int>();
             int heuristicVal;
@@ -34,6 +35,7 @@ namespace RobertWyzgolikProjekt
                     Logger.customLog($"Rozwiązanie znaleziono w {sw.ElapsedMilliseconds} ms");
                     Console.WriteLine("Znaleziono docelowe rozwiązanie");
                     Console.WriteLine($"Rozwiązanie znaleziono w { sw.ElapsedMilliseconds} ms \n");
+                    Console.WriteLine("------------------------------------");
                     return;
                 }
                 if(!HelperActions.isStateKnown(heurisitcValues, puzzle.puzzle, size))
