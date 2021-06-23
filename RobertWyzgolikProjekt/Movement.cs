@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace RobertWyzgolikProjekt
 {
+    // class which contatins methods that allow algorithms to perfrom different movements which is basically changing different tile's location
     public class Movement
     {
         public static void makeMovement(List<int> board, int movement, int size, int index)

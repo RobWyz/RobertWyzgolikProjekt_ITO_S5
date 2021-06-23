@@ -7,6 +7,7 @@ using System.IO;
 
 namespace RobertWyzgolikProjekt
 {
+    // class being responsible for the entire interaction with an end user by reading his inputs and choosing appropriate program paths based on his choices
     public class UserInteraction
     {
         // method which displays a welcome message

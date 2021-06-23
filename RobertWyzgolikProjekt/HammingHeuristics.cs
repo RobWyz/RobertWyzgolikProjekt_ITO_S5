@@ -5,7 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace RobertWyzgolikProjekt
-{
+{   
+    // class containing Hamming heuristic counter method that is in this case used in order to solve N puzzle problem
     public class HammingHeuristics
     {
         // class method which allows to count hamming heuristic while given a problem

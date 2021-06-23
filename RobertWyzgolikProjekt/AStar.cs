@@ -9,11 +9,13 @@ using System.Diagnostics;
 
 namespace RobertWyzgolikProjekt
 {
+    // class which contains A* algorithm implementation that in this case will be used to solve N problem puzzles.  
     public class AStar
     {
         public const int movementCost = 1;
  
         // AStar class method contatining algorithm implementation based on a pseudecode privded in a raport.
+        // It's design is based on an explanation of the A* algorithm from ITO subject lectures. 
 
         public static void runAStarSearch(List<int> board, List<int> finalBoard, int heuristic, int size)
         {

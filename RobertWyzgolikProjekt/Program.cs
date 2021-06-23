@@ -5,6 +5,7 @@ using System.Text;
 
 namespace RobertWyzgolikProjekt
 {
+    // Main program loop which allows user to specify loggint path, problem, algorithm, puzzle's size, heuristic etc. and run it as many times as he wants 
     public class Program
     {
         static void Main(string[] args)
@@ -27,14 +28,6 @@ namespace RobertWyzgolikProjekt
                 var heuristic = UserInteraction.heuristicChoice(); // choose heuristic 
                 finalPuzzle = UserInteraction.modeChoice(size); // ask user whether he wants to get to zero first, zero last or snail state
                 usersPuzzle = UserInteraction.generateChoice(size); // ask user whether he wants to generate random board, read it from a file or provide it using keyboard
-                /*
-                while(!Solvability.assessSolvability(usersPuzzle, finalPuzzle, size)) // deals with problems that can not be processed to a final state
-                {
-                    Console.WriteLine("Zadany problem nie jest możliwy do rozwiązania");
-                    Console.WriteLine("Proszę spróbować z innym");
-                    usersPuzzle = UserInteraction.generateChoice(size);
-                }
-                */
                 UserInteraction.displayCurrentState(HelperActions.splitData(new Puzzle(usersPuzzle, 999999), size)); // displays the very first state
                 UserInteraction.runPreferredAlgorithm(usersPuzzle, finalPuzzle, heuristic, size); // runs preferred algorithm
                 run = UserInteraction.doesUserWantToRunOnceMore(); // asks user whether he wants to run once more

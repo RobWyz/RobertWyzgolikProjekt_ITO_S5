@@ -7,6 +7,7 @@ using System.IO;
 
 namespace RobertWyzgolikProjekt
 {
+    // class which contains implementation that makes it enable for software to log all of the run information to a specified file
     public class Logger
     {
         public static string logPath { get; set; }

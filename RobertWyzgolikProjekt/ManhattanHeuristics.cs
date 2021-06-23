@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace RobertWyzgolikProjekt
 {
+    // class containing Manhattan heuristic counter method that is in this case used in order to solve N puzzle problem
     public class ManhattanHeuristics
     {
         // class method which allows to count manhattan heuristic while given a problem

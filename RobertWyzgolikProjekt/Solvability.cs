@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace RobertWyzgolikProjekt
 {
+    // class that allows software to auto assess whether provided problem is solvable or not
     public class Solvability
     {
         // method which returns a number of inversion in a given puzzle state

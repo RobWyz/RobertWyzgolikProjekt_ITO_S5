@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace RobertWyzgolikProjekt
 {
+    // General purpose class that contains method that perform various actions that are not alligned to any other module but are necessary to solve N puzzle problem
     public class HelperActions
     {
 

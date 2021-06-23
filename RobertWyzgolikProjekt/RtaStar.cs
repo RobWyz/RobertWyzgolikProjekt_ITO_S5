@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 using System.Diagnostics;
 
 namespace RobertWyzgolikProjekt
-{   
+{
+    // class which contains RTA* algorithm implementation that in this case will be used to solve N problem puzzles.  
     public class RtaStar
     {
         // Real Time A* algorithm implementation based on a pseudocode provided in a raport

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace RobertWyzgolikProjekt
 {
+    // Class that allows user to generate different puzzle states 
     public class BoardsConst
     {
         // method which is responsible for generating a random order board in a given size
