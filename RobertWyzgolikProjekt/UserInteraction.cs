@@ -115,7 +115,7 @@ namespace RobertWyzgolikProjekt
         // this method allows user to set logging path so that the entire problem trace will be saved there
         public static void setLoggingPath()
         {
-            Console.WriteLine("Proszę wprowadzić ścieżkę do pliku .txt, w którym zapisany zostanie przebieg programu.");
+            Console.WriteLine("Proszę wprowadzić pełną ścieżkę do pliku .txt, w którym zapisany zostanie przebieg programu.");
             
             string path = Console.ReadLine();
             Logger.logPath = @path;
@@ -171,7 +171,7 @@ namespace RobertWyzgolikProjekt
         public static List<int> readBoardFromFile(int size)
         {
             int[] intArray;
-            Console.WriteLine("Proszę określić ścieżkę do pliku, z którego planszę powinienem wczytać");
+            Console.WriteLine("Proszę określić pełną ścieżkę do pliku .txt znajdującego się na dysku, z którego powinienem wczytać planszę");
             string puzzlePath = Console.ReadLine();
             List<int> puzzle = new List<int>();
             if (!File.Exists(puzzlePath))
