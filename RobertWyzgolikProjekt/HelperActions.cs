@@ -211,13 +211,15 @@ namespace RobertWyzgolikProjekt
         // allows to update heuristic of a specific node
         public static void updateHeuristicById(IDictionary<Puzzle, int> knownStates, int id, int heuristic)
         {
-            foreach (KeyValuePair<Puzzle, int> item in knownStates)
+            for (int i = 0; i < knownStates.Count; i++)
             {
+                var item = knownStates.ElementAt(i);
                 if (item.Key.id == id)
                 {
                     knownStates[item.Key] = heuristic;
                 }
             }
+            
         }
     }
 
